@@ -30,7 +30,6 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  GOTOOLCHAIN: go1.26.5+auto
 
 jobs:
   build:
@@ -69,6 +68,11 @@ jobs:
 
       - name: Pre Clone
         run: ./wrt_core/pre_clone_action.sh ${{ inputs.model }}
+
+      - name: Update Golang to 1.26
+        run: |
+          rm -rf feeds/packages/lang/golang
+          git clone https://github.com/kenzok8/golang -b 1.26 feeds/packages/lang/golang
 
       - name: Delete Old Cache First
         run: |
