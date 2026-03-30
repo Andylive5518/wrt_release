@@ -30,6 +30,7 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GOTOOLCHAIN: go1.26.5+auto
 
 jobs:
   build:
