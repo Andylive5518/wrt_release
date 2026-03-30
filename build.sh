@@ -75,6 +75,11 @@ fi
 
 "$BASE_PATH/update.sh" "$REPO_URL" "$REPO_BRANCH" "$BUILD_DIR" "$COMMIT_HASH"
 
+if [[ -d "$BASE_PATH/../$BUILD_DIR/feeds/packages/lang/golang" ]]; then
+    rm -rf "$BASE_PATH/../$BUILD_DIR/feeds/packages/lang/golang"
+    git clone https://github.com/kenzok8/golang -b 1.26 "$BASE_PATH/../$BUILD_DIR/feeds/packages/lang/golang"
+fi
+
 apply_config
 remove_uhttpd_dependency
 
