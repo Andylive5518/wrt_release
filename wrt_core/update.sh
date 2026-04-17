@@ -78,10 +78,10 @@ main() {
     update_smartdns
     update_diskman
     update_dockerman
-    set_nginx_default_config
+    # set_nginx_default_config  # 使用 uhttpd
     update_uwsgi_limit_as
     update_argon
-    update_nginx_ubus_module
+    # update_nginx_ubus_module   # 使用 uhttpd
     check_default_settings
     install_opkg_distfeeds
     fix_easytier_mk
