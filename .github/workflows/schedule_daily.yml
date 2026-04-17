@@ -29,11 +29,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Trigger Release WRT
-        if: inputs.model == 'all' || inputs.model == 'release_wrt'
+        if: inputs.model == 'all' || inputs.model == 'release_wrt' || github.event_name == 'schedule'
         run: |
           gh workflow run release_wrt.yml -f model=jdcloud_ipq60xx_immwrt --repo ${{ github.repository }}
 
       - name: Trigger X86 WRT
-        if: inputs.model == 'all' || inputs.model == 'x86_wrt'
+        if: inputs.model == 'all' || inputs.model == 'x86_wrt' || github.event_name == 'schedule'
         run: |
           gh workflow run x86_wrt.yml -f model=x64_immwrt --repo ${{ github.repository }}
